@@ -12,5 +12,4 @@ async function getImg(apiKey) {
     return json;
 }
 
-const rep = getImg();
-console.log()
+getImg().then(response => console.log(response))
