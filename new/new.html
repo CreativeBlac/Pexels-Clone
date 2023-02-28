@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="card">
+            <img src="" />
+         </div> -->
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        let cardTag = '';
+
+        function getPhotos(images) {
+            images.map(image => {
+                cardTag = `<div class="card">
+              <img src=${image.src.tiny} />
+         </div>`;
+                container.innerHTML += cardTag;
+            })
+        }
+        fetch("https://api.pexels.com/v1/search?query=people", {
+                headers: {
+                    Authorization: "jcZGeGMCLey8jUuI08tKEL3XPTb2RGDd4HxFsxc8tmSs7FBvgDKNFBWN"
+                }
+            })
+            .then(resp => {
+                return resp.json()
+            })
+            .then(data => {
+                getPhotos(data.photos);
+            })
+    </script>
+</body>
+
+</html>

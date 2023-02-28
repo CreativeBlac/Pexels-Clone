@@ -24,3 +24,16 @@ form {
     padding: 0.7rem;
     cursor: pointer;
 }
+
+.open {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+img {
+    width: 400px;
+    margin: 12px;
+}
