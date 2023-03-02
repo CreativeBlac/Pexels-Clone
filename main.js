@@ -1,7 +1,13 @@
 const apiKey = 'jcZGeGMCLey8jUuI08tKEL3XPTb2RGDd4HxFsxc8tmSs7FBvgDKNFBWN';
+//apikey
 
-async function getImg(apiKey) {
-    const response = await fetch("https://api.pexels.com/v1/search?query=people", {
+const searchEl = document.getElementById('search');
+const formEl = document.getElementById('form');
+
+
+async function getImg() {
+    let url = 'https://api.pexels.com/v1/search?query=people'
+    const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',
             headers: {
@@ -14,6 +20,7 @@ async function getImg(apiKey) {
         })
         .then(data => {
             getPhotos(data.photos)
+            console.log(data)
         }).catch((err) => {
             console.log('Error Occured At:' + err.message);
         })
@@ -28,3 +35,12 @@ function getPhotos(photos) {
         openEl.appendChild(img)
     })
 }
+
+//event handler
+formEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.preventDefault();
+    let searchImage = searchEl.value;
+    console.log(searchImage)
+})
